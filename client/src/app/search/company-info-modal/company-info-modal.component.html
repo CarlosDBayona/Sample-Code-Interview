@@ -1,0 +1,11 @@
+<div class="modal">
+  <h1>Information about the company</h1>
+  <p>NIT/Identification: {{data.nit}}</p>
+  <p *ngIf="data.identificationTypeId == 1">Full name: {{data.firstName}} {{data.secondName}} {{data.firstLastName}} {{data.secondLastName}}</p>
+  <p *ngIf="data.identificationTypeId != 1">Comany name: {{data.companyName}}</p>
+  <p>Email: {{data.email}}</p>
+  <p>Agreed to email messages: {{data.authorizeMessagesEmail}}</p>
+  <p>Agreed to phone messages: {{data.authorizeMessagesPhone}}</p>
+  <button mat-raised-button color="warn" (click)="close()">Close</button>
+
+</div>

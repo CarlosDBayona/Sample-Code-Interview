@@ -1,0 +1,24 @@
+.component{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.register-form{
+  width: 500px;
+  max-width: 100%;
+  border: solid black;
+  border-radius: 25px;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}

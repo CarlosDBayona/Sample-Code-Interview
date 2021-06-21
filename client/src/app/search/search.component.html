@@ -1,0 +1,12 @@
+<div class="component">
+  <form action="" class="search-form" [formGroup]="searchForm" (ngSubmit)="search()">
+    <h1>Find Company</h1>
+    <mat-form-field>
+      <mat-label>NIT/Identification Number</mat-label>
+      <input matInput type="number" formControlName="nit">
+      <mat-error *ngIf="!searchForm.hasError('required')">Value is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Search</button>
+    <button mat-raised-button color="accent" routerLink="register">Register</button>
+  </form>
+</div>

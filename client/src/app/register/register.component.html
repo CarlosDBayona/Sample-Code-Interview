@@ -1,0 +1,69 @@
+<div class="component">
+  <form action="" class="register-form" [formGroup]="registerForm" (ngSubmit)="register()">
+    <h1>Register Company</h1>
+    <mat-form-field>
+      <mat-label>Identification Type</mat-label>
+      <mat-select [formControlName]="'identificationType'" (ngModelChange)="changeIdType()">
+        <mat-option *ngFor="let documentType of typesOfDocuments" [value]="documentType.id">
+          {{documentType.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ng-container *ngIf="registerForm.controls['identificationType'].value">
+      <mat-form-field>
+        <mat-label>Identification Number</mat-label>
+        <input matInput type="number" formControlName="nit" >
+        <mat-error *ngIf="registerForm.controls['nit'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['nit'].hasError('min')">Value must be greater than 0</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput type="text" formControlName="email">
+        <mat-error *ngIf="registerForm.controls['email'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('email')">Invalid email</mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="!companyForm && registerForm.controls['identificationType'].value">
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput type="text" formControlName="firstName">
+        <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['firstName'].hasError('pattern')">Only letters</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Second name</mat-label>
+        <input matInput type="text" formControlName="secondName">
+        <mat-error *ngIf="registerForm.controls['secondName'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['secondName'].hasError('pattern')">Only letters</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>First last name</mat-label>
+        <input matInput type="text" formControlName="firstLastName">
+        <mat-error *ngIf="registerForm.controls['firstLastName'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['firstLastName'].hasError('pattern')">Only letters</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Second last name</mat-label>
+        <input matInput type="text" formControlName="secondLastName">
+        <mat-error *ngIf="registerForm.controls['secondLastName'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['secondLastName'].hasError('pattern')">Only letters</mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngIf="companyForm">
+      <mat-form-field>
+        <mat-label>Company name</mat-label>
+        <input matInput type="text" formControlName="companyName">
+        <mat-error *ngIf="registerForm.controls['companyName'].hasError('required')">Value is required</mat-error>
+        <mat-error *ngIf="registerForm.controls['companyName'].hasError('pattern')">Only letters</mat-error>
+      </mat-form-field>
+    </ng-container>
+    <section >
+      <mat-checkbox formControlName="authorizeMessagesPhone">Do you authorize to receive messages to your phone?</mat-checkbox>
+    </section>
+    <section>
+      <mat-checkbox formControlName="authorizeMessagesEmail">Do you authorize to receive messages to your email?</mat-checkbox>
+    </section>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>
